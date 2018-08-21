@@ -63,6 +63,7 @@ export default class RNPickerSelect extends PureComponent {
         animationType: PropTypes.string,
         onUpArrow: PropTypes.func,
         onDownArrow: PropTypes.func,
+        onDone: PropTypes.func,
         doneText: PropTypes.string,
     };
 
@@ -238,6 +239,9 @@ export default class RNPickerSelect extends PureComponent {
                 </View>
                 <TouchableWithoutFeedback
                     onPress={() => {
+                        if (this.props.onDone) {
+                            this.props.onDone();
+                        }
                         this.togglePicker(true);
                     }}
                     hitSlop={{ top: 2, right: 2, bottom: 2, left: 2 }}
